@@ -1,0 +1,292 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    max-width: 100vw;
+    max-height: 100vw ;
+}
+body{
+    background-color: #686466;
+    background-image: url('../images/pexels-pixabay-265087.jpg'); /* Caminho baseado na URL pública */
+    background-size: 1800px 1000px;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    margin: 0;
+    height: 100vh;
+}
+/***SECTIONS****/
+#login_sect{
+    display: flex;
+    justify-content: center;
+    gap: 0px;
+    padding-top: 200px;
+    flex-wrap: wrap;
+
+}
+#register_sect{
+    display: flex;
+    justify-content: center;
+    gap: 0px;
+    padding-top: 200px;
+    flex-wrap: wrap;
+}
+/***********************/
+
+
+/****LOGIN******/
+.input_group{
+    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    padding: 10px;
+}
+.container_login{
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 8px;
+    width: 45%;
+    height: 500px;
+    box-shadow: 10px 5px 5px black;
+
+}
+.container_login{
+    background-color: #ffff;
+}
+#login_form{
+    top: 20%;
+    justify-content: center;
+    position: relative;
+    text-align: left;
+}
+#login_form a{
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
+    position: relative;
+    left: 79%;
+    width: 170px;
+}
+#remeber_login{
+    position: relative;
+    right: 50%;
+    top: -17px;
+}
+#submit_login{
+    margin-top: 10px;
+    border-radius: 8px;
+    font-size: 20px;
+    background-color: #96d7eb;
+    width: 500px;
+    height: 50px;
+    border-radius: 30px;
+    position: relative;
+    left: 20%;
+}
+.container_login h2{
+    position: relative;
+    top: 50px;
+    text-align: center;
+    font-size: 72px;
+    color: black;
+    text-shadow: 
+    2px 2px 1px white,  
+    -2px -2px 1px white,  
+    2px -2px 1px white,  
+    -2px 2px 1px white;
+}
+.container_login input[type="text"]{
+    width: 100%;
+    text-align: center;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid black;
+    transition: border-bottom 0.3s ease;
+    
+}
+
+.container_login input[type="text"]:focus{
+    border-bottom: 3px solid black;
+}
+
+
+.container_login input[type="password"]{
+    width: 100%;
+    text-align: center;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid black;
+    transition: border-bottom 0.3s ease;
+}
+.container_login input[type="password"]:focus{
+    border-bottom: 3px solid black;
+}
+
+.container_login label{
+    text-align: center;
+    color: black;
+    font-size: 25px;
+    
+}
+/***********************/
+/****CREATE ACCOUNT*****/
+.create_account{
+    flex-direction: column;
+    border-radius: 8px;
+    width: 35%;
+    height: 500px;
+    box-shadow: 10px 5px 5px black;
+    background-color: #96d7eb;
+}
+.create_account h2{
+    font-size: 70px;
+    position: relative;
+    text-align: center;
+    top: 70px;
+}
+.create_account button{
+    width: 250px;
+    height: 50px;
+    position: relative;
+    top: 30%;
+    left: 30%;
+    border-radius: 25px;
+    background-color: #ffff;
+    font-size: 25px;
+    color: black;
+
+}
+/***********************/
+
+
+
+/*Registro*/
+.container_register{
+    display: flex;
+    background-color: #96d7eb;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 8px;
+    width: 45%;
+    height: 500px;
+    box-shadow: 10px 5px 5px black;
+}
+
+.container_register h2{
+    position: relative;
+    top: 15px;
+    text-align: center;
+    font-size: 72px;
+    color: black;
+    text-shadow: 
+    2px 2px 1px white,  
+    -2px -2px 1px white,  
+    2px -2px 1px white,  
+    -2px 2px 1px white;
+}
+
+.input_group_register{
+    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    padding-bottom: 20px;
+}
+.input_group_register label{
+    padding-top: 15px;
+}
+.input_group_register input{
+    padding-top: 10px;
+}
+.mostrar_senha_register{
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    position: absolute;
+    top: 170px;
+    right: 10px;
+}
+.container_register input[type="text"]{
+    width: 100%;
+    text-align: center;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid black;
+    transition: border-bottom 0.3s ease;
+    background: none;
+    
+}
+
+.container_register input[type="text"]:focus{
+    border-bottom: 3px solid black;
+}
+.container_register input[type="password"]{
+    width: 100%;
+    text-align: center;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid black;
+    transition: border-bottom 0.3s ease;
+    background: none;
+    
+}
+
+.container_register input[type="password"]:focus{
+    border-bottom: 3px solid black;
+}
+.container_register input[type="email"]{
+    width: 100%;
+    text-align: center;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid black;
+    transition: border-bottom 0.3s ease;
+    background: none;
+    
+}
+
+.container_register input[type="email"]:focus{
+    border-bottom: 3px solid black;
+}
+#register-form{
+    justify-content: center;
+    position: relative;
+    top: 5%;
+}
+#submit_register{
+    align-self: center;
+    margin-top: 15px;
+    border-radius: 25px;
+    font-size: 20px;
+    width: 120px;
+    height: 50px;
+    padding: 0px;
+}
+.container_register label{
+    text-align: center;
+    color: black;
+    font-size: 25px;
+    
+}
+/************/
+
+
+.mostrar_senha{
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    position: absolute;
+    top: 70px;
+    right: 10px;
+}
+
+.input_group p{
+    position: relative;
+    bottom: 35px;
+    left: 10px;
+    font-size: 20px;
+    width: 170px;
+}

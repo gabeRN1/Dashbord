@@ -1,0 +1,7 @@
+RewriteEngine On
+RewriteBase /Dashbord/public/
+
+# Redireciona para o index.php quando a URL não corresponder a um arquivo ou pasta
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [QSA,L]
