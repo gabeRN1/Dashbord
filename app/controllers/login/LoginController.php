@@ -20,7 +20,8 @@ class LoginController extends Controller {
                 $_SESSION['username'] = $user['user']; 
 
                 
-                echo "Login bem-sucedido!";
+                header('Location: /Dashbord/public/graphics');
+                exit();
             } else {
                 
                 echo "Falha no login!";

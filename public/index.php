@@ -31,6 +31,13 @@ switch ($uri) {
             $controller->login(); 
             break;
 
+        case 'Dashbord/public/graphics';
+            require_once 'E:\Downloads\Xamp\htdocs\Dashbord\app\controllers\home\ExchangeRateController.php';
+            $controller = new ExchangeRateController();
+            $controller->index();
+            break;
+
+
     default:
         echo "Página não encontrada.";
         break;
