@@ -4,7 +4,7 @@ require_once '../core/Controller.php';
 require_once 'E:\Downloads\Xamp\htdocs\Dashbord\app\models\UserModel.php';
 require_once 'E:\Downloads\Xamp\htdocs\Dashbord\app\models\model.php';
 
-class RegisterController extends Controller {
+class RegisterController extends Controller{
     
     private $UserModel;
 
