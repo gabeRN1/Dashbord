@@ -6,12 +6,36 @@
 const apiUrl = `https://v6.exchangerate-api.com/v6/7f70e76d00431e58b717eccc/latest/`;
 
 const currencySelector = document.getElementById("currencySelector");
-const euroChartCanvas = document.getElementById("chartEuro").getContext("2d");
-const usdChartCanvas = document.getElementById("chartUSD").getContext("2d");
-const timeRangeSelector = document.getElementById("timeRange");
 
-let euroChart;
-let usdChart;
+// Elementos canvas e configurações das moedas
+const chartsConfig = [
+    {
+        canvas: document.getElementById("chartEuro").getContext("2d"),
+        currency: "EUR",
+        backgroundColor: "rgba(54, 162, 235, 0.2)",
+        borderColor: "rgba(54, 162, 235, 1)"
+    },
+    {
+        canvas: document.getElementById("chartUSD").getContext("2d"),
+        currency: "USD",
+        backgroundColor: "rgba(255, 99, 132, 0.2)",
+        borderColor: "rgba(255, 99, 132, 1)"
+    },
+    {
+        canvas: document.getElementById("chartJPY").getContext("2d"),
+        currency: "JPY",
+        backgroundColor: "rgba(75, 192, 192, 0.2)",
+        borderColor: "rgba(75, 192, 192, 1)"
+    },
+    {
+        canvas: document.getElementById("chartGBP").getContext("2d"),
+        currency: "GBP",
+        backgroundColor: "rgba(153, 102, 255, 0.2)",
+        borderColor: "rgba(153, 102, 255, 1)"
+    }
+];
+
+let charts = {}; // Objeto para armazenar instâncias dos gráficos
 
 async function updateCharts(baseCurrency) {
     try {
@@ -19,57 +43,47 @@ async function updateCharts(baseCurrency) {
         const response = await fetch(apiUrl + baseCurrency);
         const data = await response.json();
 
-        // Valores das moedas em relação à moeda base
-        const euroValue = 1 / data.conversion_rates["EUR"]; // Valor do Euro
-        const usdValue = 1 / data.conversion_rates["USD"]; // Valor do Dólar
+        // Iterar sobre as configurações e atualizar os gráficos
+        chartsConfig.forEach(({ canvas, currency, backgroundColor, borderColor }) => {
+            const value = 1 / data.conversion_rates[currency]; // Valor da moeda
+            
+            // Destruir gráfico existente
+            if (charts[currency]) charts[currency].destroy();
 
-        // Atualizar gráfico do Euro
-        if (euroChart) euroChart.destroy();
-        euroChart = new Chart(euroChartCanvas, {
-            type: "bar",
-            data: {
-                labels: ["Euro (EUR)"],
-                datasets: [{
-                    label: `Valor em ${baseCurrency}`,
-                    data: [euroValue],
-                    backgroundColor: "rgba(54, 162, 235, 0.2)",
-                    borderColor: "rgba(54, 162, 235, 1)",
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: false,
-                scales: {
-                    y: { beginAtZero: true }
+            // Criar novo gráfico
+            charts[currency] = new Chart(canvas, {
+                type: "bar",
+                data: {
+                    labels: [`${currency}`],
+                    datasets: [{
+                        label: `Valor em ${baseCurrency}`,
+                        data: [value],
+                        backgroundColor: backgroundColor,
+                        borderColor: borderColor,
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: false,
+                    scales: {
+                        y: { beginAtZero: true }
+                    }
                 }
-            }
-        });
-
-        // Atualizar gráfico do Dólar
-        if (usdChart) usdChart.destroy();
-        usdChart = new Chart(usdChartCanvas, {
-            type: "bar",
-            data: {
-                labels: ["Dólar (USD)"],
-                datasets: [{
-                    label: `Valor em ${baseCurrency}`,
-                    data: [usdValue],
-                    backgroundColor: "rgba(255, 99, 132, 0.2)",
-                    borderColor: "rgba(255, 99, 132, 1)",
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: false,
-                scales: {
-                    y: { beginAtZero: true }
-                }
-            }
+            });
         });
     } catch (error) {
         console.error("Erro ao buscar dados da API:", error);
     }
 }
+
+// Evento para mudar a moeda base
+currencySelector.addEventListener("change", () => {
+    const selectedCurrency = currencySelector.value;
+    updateCharts(selectedCurrency);
+});
+
+// Inicializar com a moeda padrão (BRL)
+updateCharts(currencySelector.value);
 
 // Evento para mudar a moeda base
 currencySelector.addEventListener("change", () => {

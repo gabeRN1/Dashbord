@@ -38,6 +38,13 @@ switch ($uri) {
             break;
 
 
+        case 'Dashbord/public/logout';
+        require_once '../app/controllers/login/LoginController.php';
+        $controller = new LoginController();
+        $controller->logout();
+        break;
+
+
     default:
         echo "Página não encontrada.";
         break;

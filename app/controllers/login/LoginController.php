@@ -29,5 +29,18 @@ class LoginController extends Controller {
         } else {
             echo "Método não permitido.";
         }
+
+       
     }
+    public function logout(){
+        session_start();
+        $_SESSION = [];
+        session_destroy();
+
+        if ($_SERVER['REQUEST_URI'] !== '/Dashbord/public/login') {
+                    header('Location: /Dashbord/public'); // Redireciona para o login
+                    exit();
+
+            }
+        }
 }
